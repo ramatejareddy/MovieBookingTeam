@@ -9,6 +9,8 @@ import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
 
 import com.cg.movie.entity.Seat;
+import com.cg.movie.entity.Show;
+import com.cg.movie.entity.Theater;
 import com.cg.movie.entity.Ticket;
 import com.cg.movie.entity.user;
 import com.cg.movie.exception.MovieBookingException;
@@ -33,10 +35,6 @@ public class BookingDAO implements BookingDAOInterface{
 	public double getPrice(int seatId) {
 		
 		Seat s1=entityManager.find(Seat.class, seatId);
-		if(s1==null)
-		{
-			 throw new MovieBookingException("seat id is not found"+seatId);
-		}
 		return s1.getSeatPrice();
 	}
 
@@ -55,6 +53,16 @@ public class BookingDAO implements BookingDAOInterface{
 		TypedQuery<Ticket> query=entityManager.createQuery(jquery,Ticket.class);
 		return query.getResultList();
 	}
-	
 
+
+	@Override
+	public List<Theater> getTheater(int movieId) {
+		String jpql = "from Theater t inner join fetch t.movie m where m.movieId=:mid";
+		TypedQuery<Theater> query = entityManager.createQuery(jpql, Theater.class);
+		
+		query.setParameter("mid", movieId);
+				return query.getResultList();
+	}
+		
+	
 }

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cg.movie.dao.BookingDAOInterface;
+import com.cg.movie.entity.Theater;
 import com.cg.movie.entity.Ticket;
 import com.cg.movie.entity.user;
 @Service
@@ -49,6 +50,11 @@ public class BookingService implements BookingServiceInterface {
 	public List<Ticket> getTicketDetails() {
 	
 		return dao.getTicketDetails();
+	}
+	@Override
+	public List<Theater> getTheater(int movieId) {
+		List<Theater> theaterList=dao.getTheater(movieId);
+		return theaterList;
 	}
 
 }

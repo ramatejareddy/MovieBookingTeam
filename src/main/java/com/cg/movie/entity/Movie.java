@@ -1,5 +1,7 @@
 package com.cg.movie.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -25,11 +27,7 @@ public class Movie {
 	private String director;
 	@Column(name="genre", length=25)
 	private String genre;
-	@Column(name="active", length=25)
-	private int active;
-	@ManyToOne
-	@JoinColumn(name="Theater_id", referencedColumnName = "theaterId")
-	private Theater theater;
+	
 
 	public int getMovieId() {
 		return movieId;
@@ -61,21 +59,8 @@ public class Movie {
 	public void setGenre(String genre) {
 		this.genre = genre;
 	}
-	public int getActive() {
-		return active;
-	}
-	public void setActive(int active) {
-		this.active = active;
-	}
-	public Movie(int movieId, String movieName, String language, String director, String genre, int active) {
-		super();
-		this.movieId = movieId;
-		this.movieName = movieName;
-		this.language = language;
-		this.director = director;
-		this.genre = genre;
-		this.active = active;
-	}
+	
+	
 	
 	
 	

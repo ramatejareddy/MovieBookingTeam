@@ -1,17 +1,19 @@
 package com.cg.movie.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.DynamicInsert;
-import org.hibernate.annotations.DynamicUpdate;
+
 
 @Entity
 @Table(name="lpu_movie_theater")
-public class Theater {
+public class Theater{
 	@Id
 	@Column(name="theaterId")
 	private int theaterId;
@@ -23,6 +25,9 @@ public class Theater {
 	private String managerName;
 	@Column(name ="managerContact")
 	private int managerContact;
+	@ManyToOne
+	@JoinColumn(name="movieId", referencedColumnName = "movie_Id")
+	private Movie movie;
 	
 	
 	public String getTheaterCity() {

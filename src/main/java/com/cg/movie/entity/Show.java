@@ -96,5 +96,8 @@ public class Show {
 		this.showstartTime = showstartTime;
 		this.showendTime = showendTime;
 	}
+	public Show() {
+		
+	}
 
 }
